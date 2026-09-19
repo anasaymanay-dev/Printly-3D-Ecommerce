@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Printly</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img src="./assets/icon.png" alt="Printly" />
+          <p>
+            Printly<br />
+            <span>Ideas Into Reality</span>
+          </p>
+        </a>
+
+        <nav id="main-nav">
+          <div class="mobile-nav-header">
+            <h2>Printly</h2>
+            <button id="close-nav" aria-label="Close Menu">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-overlay" id="menu-overlay"></div>
+
+        <div class="header-icons">
+          <!-- Search -->
+          <div class="header-action">
+            <button id="search-btn" aria-label="Search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <div class="search-box" id="search-box">
+              <div class="panel-header">
+                <h2>Search</h2>
+
+                <button class="close-panel" id="close-search">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <div class="search-input">
+                <input type="text" placeholder="Search products..." />
+                <button>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+
+              <div class="search-section">
+                <h3 class="search-section-title">SEARCH RESULT</h3>
+
+                <div class="search-result">
+                  <!-- <a href="product.html" class="search-product">
+                    <div class="search-product-image">
+                      <img
+                        src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+                        alt="3D Printed Desk Organizer"
+                      />
+
+                      <span class="product-statue">Sale</span>
+                    </div>
+
+                    <div class="search-product-info">
+                      <h3>3D Printed Desk Organizer</h3>
+
+                      <div class="product-price">
+                        <span class="old-price">LE 450.00</span>
+                        <span class="new-price">LE 350.00</span>
+                      </div>
+
+                      <button class="add-to-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Add to Cart
+                      </button>
+                    </div>
+                  </a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist -->
+          <div class="header-action">
+            <button id="heart-btn" aria-label="Wishlist">
+              <i class="fa-regular fa-heart"></i>
+              <span id="heart-count">0</span>
+            </button>
+
+            <div class="side-box love-box" id="love-box">
+              <div class="panel-header">
+                <h2>Wishlist</h2>
+
+                <button class="close-panel" id="close-love">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <!-- <div class="wishlist-product">
+                <div class="wishlist-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80"
+                    alt="3D Printed Home Decor"
+                  />
+                </div>
+
+                <div class="wishlist-info">
+                  <h3>Modern 3D Printed Decor</h3>
+
+                  <p>LE 420.00</p>
+
+                  <button class="remove-wishlist">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div> -->
+
+              <a href="products.html" class="panel-btn"> Explore Products </a>
+            </div>
+          </div>
+
+          <!-- Cart -->
+          <div class="header-action">
+            <button id="cart-btn" aria-label="Cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+
+              <span id="cart-count">2</span>
+            </button>
+
+            <div class="side-box cart-box" id="cart-box">
+              <div class="panel-header">
+                <h2>Your Cart</h2>
+
+                <button class="close-panel" id="close-cart">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <div class="cart-products">
+                <!-- <div class="cart-product">
+                  <div class="cart-product-image">
+                    <img
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=500&q=80"
+                      alt="3D Printed Desk Organizer"
+                    />
+                  </div>
+
+                  <div class="cart-product-info">
+                    <h3>3D Printed Desk Organizer</h3>
+
+                    <p>LE 350.00</p>
+
+                    <div class="cart-product-actions">
+                      <button class="quantity-btn">−</button>
+
+                      <span>1</span>
+
+                      <button class="quantity-btn">+</button>
+                    </div>
+                  </div>
+
+                  <button class="remove-cart">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div> -->
+              </div>
+
+              <div class="cart-summary">
+                <div>
+                  <span>Subtotal</span>
+                  <strong>LE 710.00</strong>
+                </div>
+
+                <div>
+                  <span>Shipping</span>
+                  <strong>LE 50.00</strong>
+                </div>
+
+                <div class="cart-total">
+                  <span>Total</span>
+                  <strong>LE 760.00</strong>
+                </div>
+
+                <a href="checkout.html" class="checkout-btn">
+                  Proceed to Checkout
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="header-action">
+            <button id="burger-btn" class="burger-btn" aria-label="Open Menu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+        <script src="js/panals.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
