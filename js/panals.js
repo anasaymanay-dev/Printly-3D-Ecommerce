@@ -21,6 +21,7 @@ searchBtn.onclick = function () {
   closePanels();
   searchBox.classList.add("active");
   menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
 };
 
 closeSearch.onclick = function () {
@@ -32,6 +33,7 @@ heartBtn.onclick = function () {
   closePanels();
   loveBox.classList.add("active");
   menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
 };
 
 closeLove.onclick = function () {
@@ -43,6 +45,7 @@ cartBtn.onclick = function () {
   closePanels();
   cartBox.classList.add("active");
   menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
 };
 
 closeCart.onclick = function () {
@@ -55,6 +58,7 @@ burgerBtn.onclick = function () {
   closePanels();
   mainNav.classList.add("active");
   menuOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
 };
 
 closeNav.onclick = function () {
@@ -67,6 +71,7 @@ function closePanels() {
   cartBox.classList.remove("active");
   mainNav.classList.remove("active");
   menuOverlay.classList.remove("active");
+  document.body.style.overflow = "";
 }
 
 document.addEventListener("click", function (e) {

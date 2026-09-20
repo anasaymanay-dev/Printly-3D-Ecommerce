@@ -1,4 +1,3 @@
-const productsGrid = document.getElementById("products-grid");
 const cartProducts = document.getElementById("cart-products");
 const cartCount = document.getElementById("cart-count");
 const cartSubtotal = document.querySelector(".cart-subtotal strong");
@@ -9,19 +8,6 @@ let shippingPrice = 50;
 let products;
 let cartProductsData = JSON.parse(localStorage.getItem("cardProducts")) || [];
 cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
-
-productsGrid.addEventListener("click", function (e) {
-  const productCard = e.target.closest(".product-card");
-
-  if (!productCard) return;
-
-  if (e.target.closest(".add-cart-btn")) {
-    addToCart(productCard.dataset.id);
-    return;
-  }
-
-  goToProduct(productCard.dataset.id);
-});
 
 cartProducts.addEventListener("click", function (e) {
   const cartProduct = e.target.closest(".cart-product");
@@ -44,84 +30,6 @@ cartProducts.addEventListener("click", function (e) {
     console.log("remove", id);
   }
 });
-
-// handle get and show data
-async function getData() {
-  const response = await fetch("/data.json");
-
-  if (!response.ok) {
-    throw new Error("Http Error " + response.status);
-  }
-
-  return await response.json();
-}
-
-getData()
-  .then((data) => {
-    products = data;
-    showProducts(data);
-  })
-  .catch((error) => {
-    productsGrid.innerHTML = error.message;
-  });
-
-function showProducts(data) {
-  let html = "";
-
-  for (let i = 0; i < 5 && i < data.length; i++) {
-    html += `
-      <article class="product-card" data-id="${data[i].id}">
-        <div class="product-image">
-          <img src="${data[i]["image-1"]}" alt="${data[i].name}" />
-
-          <button class="wishlist-btn">
-            <i class="fa-regular fa-heart"></i>
-          </button>
-        </div>
-
-        <div class="product-info">
-          <h3>${data[i].name}</h3>
-
-          <p class="product-price">
-            EGP ${data[i].price}
-          </p>
-
-          <button class="add-cart-btn" data-id="${data[i].id}">
-            Add to Cart
-          </button>
-        </div>
-      </article>
-    `;
-  }
-
-  productsGrid.innerHTML = html;
-}
-
-// handle click on product
-function goToProduct(id) {
-  location.href = `product.html?id=${id}`;
-}
-
-// add to cart
-function addToCart(id) {
-  const product = products.find((product) => {
-    return product.id === Number(id);
-  });
-
-  if (!product) return;
-
-  const test = cartProductsData.some((p) => {
-    return p.id === product.id;
-  });
-
-  if (test) return;
-
-  cartProductsData.push(product);
-
-  localStorage.setItem("cardProducts", JSON.stringify(cartProductsData));
-
-  showCardProducts();
-}
 
 function showCardProducts() {
   subTotal = 0;
