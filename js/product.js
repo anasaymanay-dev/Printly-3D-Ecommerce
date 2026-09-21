@@ -9,7 +9,7 @@ let currentImage = 1;
 async function getData() {
   productDetails.innerHTML = "<span>Loading Product...</span>";
   try {
-    let response = await fetch("/data.json");
+    let response = await fetch("./data.json");
 
     if (!response.ok) {
       throw new Error("HTTP Error " + response.status);
