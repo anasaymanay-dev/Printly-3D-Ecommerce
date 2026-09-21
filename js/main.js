@@ -47,7 +47,7 @@ cartProducts.addEventListener("click", function (e) {
 
 // handle get and show data
 async function getData() {
-  const response = await fetch("/data.json");
+  const response = await fetch("../data.json");
 
   if (!response.ok) {
     throw new Error("Http Error " + response.status);
