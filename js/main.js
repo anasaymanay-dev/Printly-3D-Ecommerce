@@ -5,7 +5,7 @@ const cartSubtotal = document.querySelector(".cart-subtotal strong");
 const cartShipping = document.querySelector(".cart-shipping strong");
 const cartTotal = document.querySelector(".cart-total strong");
 let subTotal = 0;
-let shippingPrice = 50;
+let shippingPrice = 0;
 let products;
 let cartProductsData = JSON.parse(localStorage.getItem("cardProducts")) || [];
 cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
@@ -127,6 +127,11 @@ function showCardProducts() {
   subTotal = 0;
   cartCount.innerHTML = cartProductsData.length;
   let html = "";
+
+  if (cartProductsData.length > 0) {
+    shippingPrice = 50;
+    cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
+  }
 
   for (let i = 0; i < cartProductsData.length; i++) {
     html += `

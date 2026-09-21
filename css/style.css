@@ -795,9 +795,9 @@ nav ul li a:hover::before {
       rgba(5, 15, 9, 0.35) 65%,
       rgba(5, 15, 9, 0.05) 100%
     ),
-    url("../assets/hero-1.png");
+    url("../assets/hero-5.png");
   background-size: cover;
-  background-position: center;
+  background-position: left;
   display: flex;
   align-items: center;
 }
