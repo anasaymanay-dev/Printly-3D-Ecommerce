@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/products.css" />
     <title>Printly</title>
   </head>
   <body>
@@ -36,8 +37,8 @@
           </div>
 
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="products.html">Shop</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html" class="active">Shop</a></li>
             <li><a href="categories.html">Categories</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -93,7 +94,7 @@
 
                       <button class="add-to-cart">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        Add to Cart
+                        Add to cart
                       </button>
                     </div>
                   </a> -->
@@ -117,33 +118,15 @@
                   <i class="fa-solid fa-xmark"></i>
                 </button>
               </div>
-
-              <!-- <div class="wishlist-product">
-                <div class="wishlist-image">
-                  <img
-                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80"
-                    alt="3D Printed Home Decor"
-                  />
-                </div>
-
-                <div class="wishlist-info">
-                  <h3>Modern 3D Printed Decor</h3>
-
-                  <p>LE 420.00</p>
-
-                  <button class="remove-wishlist">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </div>
-              </div> -->
+              <div class="wishlist-products" id="wishlist-products"></div>
 
               <a href="products.html" class="panel-btn"> Explore Products </a>
             </div>
           </div>
 
-          <!-- Cart -->
+          <!-- cart -->
           <div class="header-action">
-            <button id="cart-btn" aria-label="Cart">
+            <button id="cart-btn" aria-label="cart">
               <i class="fa-solid fa-cart-shopping"></i>
 
               <span id="cart-count">0</span>
@@ -151,7 +134,7 @@
 
             <div class="side-box cart-box" id="cart-box">
               <div class="panel-header">
-                <h2>Your Cart</h2>
+                <h2>Your cart</h2>
 
                 <button class="close-panel" id="close-cart">
                   <i class="fa-solid fa-xmark"></i>
@@ -191,7 +174,261 @@
       </div>
     </header>
     <!-- end header -->
+
+    <main>
+      <section class="shop-hero">
+        <div class="container">
+          <div class="shop-hero-content">
+            <span class="shop-label">PRINTLY SHOP</span>
+
+            <h1>Find Something <span>Worth Printing</span></h1>
+
+            <p>
+              Explore our collection of creative 3D printed products made to
+              bring your ideas into reality.
+            </p>
+
+            <div class="breadcrumb">
+              <a href="./index.html">Home</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span>Shop</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="products-section">
+        <div class="container">
+          <div class="products-header">
+            <div>
+              <span class="section-label">OUR COLLECTION</span>
+              <h2>All Products</h2>
+              <p>Discover our latest 3D printed products.</p>
+            </div>
+
+            <div class="products-count">
+              <span id="products-count">0</span> Products
+            </div>
+          </div>
+
+          <div class="products-tools">
+            <div class="products-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+              <input
+                type="text"
+                id="products-search"
+                placeholder="Search products..."
+              />
+            </div>
+
+            <div class="category-filter">
+              <button class="category-btn active" data-category="all">
+                All
+              </button>
+
+              <button class="category-btn" data-category="home">Home</button>
+
+              <button class="category-btn" data-category="desk">Desk</button>
+
+              <button class="category-btn" data-category="accessories">
+                Accessories
+              </button>
+            </div>
+
+            <div class="sort-box">
+              <select id="sort-products">
+                <option value="default">Sort By</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="name">Name: A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="products-grid" id="products-grid">
+            <!-- Product 1 -->
+            <article class="product-cart" data-id="1">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-1.png"
+                  alt="3D Printed Desk Organizer"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Desk Organizer</h3>
+
+                <p class="product-price">EGP 350</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-cart" data-id="2">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-2.png"
+                  alt="3D Printed Plant Pot"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Plant Pot</h3>
+
+                <p class="product-price">EGP 280</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="product-cart" data-id="3">
+              <div class="product-image">
+                <img src="./assets/hero-1.png" alt="3D Printed Phone Stand" />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Phone Stand</h3>
+
+                <p class="product-price">EGP 220</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 4 -->
+            <article class="product-cart" data-id="4">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-4.png"
+                  alt="3D Printed Cable Organizer"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Cable Organizer</h3>
+
+                <p class="product-price">EGP 180</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 5 -->
+            <article class="product-cart" data-id="5">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-5.png"
+                  alt="3D Printed Wall Decor"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Wall Decor</h3>
+
+                <p class="product-price">EGP 450</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 6 -->
+            <article class="product-cart" data-id="6">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-6.png"
+                  alt="3D Printed Mini Vase"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Mini Vase</h3>
+
+                <p class="product-price">EGP 320</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 7 -->
+            <article class="product-cart" data-id="7">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-7.png"
+                  alt="3D Printed Key Holder"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Key Holder</h3>
+
+                <p class="product-price">EGP 250</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+
+            <!-- Product 8 -->
+            <article class="product-cart" data-id="8">
+              <div class="product-image">
+                <img
+                  src="./assets/products/product-8.png"
+                  alt="3D Printed Desk Lamp"
+                />
+
+                <button class="wishlist-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-info">
+                <h3>3D Printed Desk Lamp</h3>
+
+                <p class="product-price">EGP 650</p>
+
+                <button class="add-cart-btn">Add to Cart</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="products-empty" id="products-empty">
+            <i class="fa-solid fa-box-open"></i>
+            <h3>No Products Found</h3>
+            <p>Try changing your search or category.</p>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="js/panals.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

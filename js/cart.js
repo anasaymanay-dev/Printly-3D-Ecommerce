@@ -4,10 +4,7 @@ const cartSubtotal = document.querySelector(".cart-subtotal strong");
 const cartShipping = document.querySelector(".cart-shipping strong");
 const cartTotal = document.querySelector(".cart-total strong");
 let subTotal = 0;
-let shippingPrice = 0;
-let products;
-let cartProductsData = JSON.parse(localStorage.getItem("cardProducts")) || [];
-cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
+let cartProductsData = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
 cartProducts.addEventListener("click", function (e) {
   const cartProduct = e.target.closest(".cart-product");
@@ -31,15 +28,10 @@ cartProducts.addEventListener("click", function (e) {
   }
 });
 
-function showCardProducts() {
+function showcartProducts() {
   subTotal = 0;
   cartCount.innerHTML = cartProductsData.length;
   let html = "";
-
-  if (cartProductsData.length > 0) {
-    shippingPrice = 50;
-    cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
-  }
 
   for (let i = 0; i < cartProductsData.length; i++) {
     html += `
@@ -78,8 +70,10 @@ function showCardProducts() {
 }
 
 function calcProductPrice() {
+  shippingPrice = cartProductsData.length > 0 ? 50 : 0;
+  cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
   cartSubtotal.innerHTML = "LE " + subTotal.toFixed(2);
   cartTotal.innerHTML = "LE " + (subTotal + shippingPrice).toFixed(2);
 }
 
-showCardProducts();
+showcartProducts();
