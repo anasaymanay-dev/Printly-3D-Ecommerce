@@ -51,7 +51,7 @@ function showcartProducts() {
             <div class="cart-product-actions">
               <button class="quantity-btn minus">−</button>
 
-              <span class="quantity">1</span>
+              <span class="quantity">${cartProductsData[i].quantity}</span>
 
               <button class="plus quantity-btn">+</button>
             </div>
@@ -63,7 +63,8 @@ function showcartProducts() {
         </div>
     `;
 
-    subTotal += Number(cartProductsData[i].price);
+    subTotal +=
+      Number(cartProductsData[i].price) * cartProductsData[i].quantity;
   }
   cartProducts.innerHTML = html;
   calcProductPrice();
@@ -74,6 +75,66 @@ function calcProductPrice() {
   cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
   cartSubtotal.innerHTML = "LE " + subTotal.toFixed(2);
   cartTotal.innerHTML = "LE " + (subTotal + shippingPrice).toFixed(2);
+}
+
+// delete product from cart
+function delProduct(id) {
+  const product = cartProductsData.find((p) => {
+    return p.id === id;
+  });
+
+  if (!product) return;
+
+  const newProducts = cartProductsData.filter((p) => {
+    return p.id !== id;
+  });
+
+  cartProductsData = newProducts;
+
+  localStorage.setItem("cartProducts", JSON.stringify(cartProductsData));
+
+  showcartProducts();
+}
+
+// increment count product in cart
+function incProduct(id) {
+  const product = cartProductsData.find((p) => {
+    return p.id === id;
+  });
+
+  if (!product) return;
+
+  const newProducts = cartProductsData.map((p) => {
+    return p.id === id ? { ...p, quantity: p.quantity + 1 } : p;
+  });
+
+  cartProductsData = newProducts;
+
+  localStorage.setItem("cartProducts", JSON.stringify(cartProductsData));
+
+  showcartProducts();
+}
+
+// decrement count product in cart
+function decProduct(id) {
+  console.log("dec");
+  const product = cartProductsData.find((p) => {
+    return p.id === id;
+  });
+
+  if (!product) return;
+
+  if (product.quantity > 1) {
+    const newProducts = cartProductsData.map((p) => {
+      return p.id === id ? { ...p, quantity: p.quantity - 1 } : p;
+    });
+    cartProductsData;
+    cartProductsData = newProducts;
+
+    localStorage.setItem("cartProducts", JSON.stringify(cartProductsData));
+
+    showcartProducts();
+  }
 }
 
 showcartProducts();

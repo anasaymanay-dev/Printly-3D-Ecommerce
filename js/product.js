@@ -99,7 +99,7 @@ function showProduct(id, products) {
             </div>
 
             <div class="product-actions">
-              <div class="quantity">
+              <div class="quantity-product">
                 <button id="minus-btn" onclick='minus()'>-</button>
 
                 <span id="quantity">1</span>
