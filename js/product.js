@@ -1,3 +1,4 @@
+import getData from "./getData.js";
 const params = new URLSearchParams(location.search);
 
 const id = params.get("id");
@@ -6,29 +7,24 @@ const productDetails = document.getElementById("product-details");
 
 let currentImage = 1;
 
-async function getData() {
-  productDetails.innerHTML = "<span>Loading Product...</span>";
-  try {
-    let response = await fetch("./data.json");
-
-    if (!response.ok) {
-      throw new Error("HTTP Error " + response.status);
-    }
-
-    let data = await response.json();
-
-    return data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-}
+productDetails.innerHTML = `
+<div class="loading">
+    <i class="fa-solid fa-spinner"></i>
+    <span>Loading Product...</span>
+</div>
+`;
 
 getData()
   .then((data) => {
     showProduct(id, data);
   })
-  .catch((error) => {
-    alert(error.message);
+  .catch(() => {
+    productDetails.innerHTML = `
+    <div class="products-empty" id="products-empty">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>No Product Found</h3>
+    </div>
+  `;
   });
 
 function showProduct(id, products) {
@@ -37,7 +33,11 @@ function showProduct(id, products) {
   });
 
   if (!product) {
-    productDetails.innerHTML = `<span>product not found with id (${id || "unKnown"})</span>`;
+    productDetails.innerHTML = `
+    <div class="products-empty" id="products-empty">
+          <i class="fa-solid fa-box-open"></i>
+          <h3>No Products Found</h3>
+      </div>`;
     return;
   }
 

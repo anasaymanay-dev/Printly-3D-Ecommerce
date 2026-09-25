@@ -1,3 +1,4 @@
+import getData from "./getData.js";
 const productsGrid = document.getElementById("products-grid");
 const cartProducts = document.getElementById("cart-products");
 const cartCount = document.getElementById("cart-count");
@@ -14,23 +15,26 @@ let wishlistProductsData =
   JSON.parse(localStorage.getItem("wishlistProducts")) || [];
 
 // handle get and show data
-async function getData() {
-  const response = await fetch("./data.json");
 
-  if (!response.ok) {
-    throw new Error("Http Error " + response.status);
-  }
-
-  return await response.json();
-}
+productsGrid.innerHTML = `
+<div class="loading">
+  <i class="fa-solid fa-spinner"></i>
+  <span>Loading Product...</span>
+</div>
+`;
 
 getData()
   .then((data) => {
     products = data;
     showProducts(data);
   })
-  .catch((error) => {
-    productsGrid.innerHTML = error.message;
+  .catch(() => {
+    productsGrid.innerHTML = `
+    <div class="products-empty" id="products-empty">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>No Products Found</h3>
+    </div>
+    `;
   });
 
 productsGrid.addEventListener("click", function (e) {
@@ -83,7 +87,10 @@ wishlistProducts.addEventListener("click", function (e) {
 
   if (e.target.closest(".remove-wishlist")) {
     removeProductFromWishlist(id);
+    return;
   }
+
+  location.href = `product.html?id=${id}`;
 });
 
 function showProducts(data) {

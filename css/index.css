@@ -38,3 +38,58 @@ a {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+.products-empty {
+  grid-column: 1/-1;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.products-empty i {
+  margin-bottom: 20px;
+  color: #aaa;
+  font-size: 50px;
+}
+
+.products-empty.active {
+  display: block;
+}
+
+.products-empty h3 {
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.products-empty p {
+  color: #777;
+}
+
+.loading {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+
+  color: #777;
+}
+
+.loading i {
+  margin-bottom: 15px;
+  color: var(--primary);
+  font-size: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

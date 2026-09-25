@@ -14,7 +14,10 @@ wishlistProducts.addEventListener("click", function (e) {
 
   if (e.target.closest(".remove-wishlist")) {
     removeProductFromWishlist(id);
+    return;
   }
+
+  location.href = `product.html?id=${id}`;
 });
 
 // delete product from wishlist cart
