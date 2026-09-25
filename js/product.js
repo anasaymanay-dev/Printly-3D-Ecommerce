@@ -18,11 +18,11 @@ getData()
   .then((data) => {
     showProduct(id, data);
   })
-  .catch(() => {
+  .catch((error) => {
     productDetails.innerHTML = `
     <div class="products-empty" id="products-empty">
         <i class="fa-solid fa-box-open"></i>
-        <h3>No Product Found</h3>
+        <h3>${error.message}</h3>
     </div>
   `;
   });
@@ -36,7 +36,7 @@ function showProduct(id, products) {
     productDetails.innerHTML = `
     <div class="products-empty" id="products-empty">
           <i class="fa-solid fa-box-open"></i>
-          <h3>No Products Found</h3>
+          <h3>No Product Found With Id (${id})</h3>
       </div>`;
     return;
   }

@@ -28,11 +28,11 @@ getData()
     products = data;
     showProducts(data);
   })
-  .catch(() => {
+  .catch((error) => {
     productsGrid.innerHTML = `
     <div class="products-empty" id="products-empty">
         <i class="fa-solid fa-box-open"></i>
-        <h3>No Products Found</h3>
+        <h3>${error.message}</h3>
     </div>
     `;
   });
