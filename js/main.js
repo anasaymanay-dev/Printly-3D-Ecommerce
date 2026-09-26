@@ -30,7 +30,7 @@ getData()
   })
   .catch((error) => {
     productsGrid.innerHTML = `
-    <div class="products-empty" id="products-empty">
+    <div class="products-empty">
         <i class="fa-solid fa-box-open"></i>
         <h3>${error.message}</h3>
     </div>

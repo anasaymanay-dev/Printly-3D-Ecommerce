@@ -43,16 +43,13 @@ a {
   grid-column: 1/-1;
   padding: 80px 20px;
   text-align: center;
+  flex: 1;
 }
 
 .products-empty i {
   margin-bottom: 20px;
   color: #aaa;
   font-size: 50px;
-}
-
-.products-empty.active {
-  display: block;
 }
 
 .products-empty h3 {
@@ -75,6 +72,7 @@ a {
   min-height: 300px;
 
   color: #777;
+  flex: 1;
 }
 
 .loading i {

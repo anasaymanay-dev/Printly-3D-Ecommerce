@@ -283,7 +283,6 @@ nav ul li a:hover::before {
   border: 1px solid var(--border);
   border-radius: 10px;
   background-color: var(--white);
-  text-decoration: none;
   transition: var(--trans);
 }
 
@@ -309,18 +308,6 @@ nav ul li a:hover::before {
 
 .search-product:hover .search-product-image img {
   transform: scale(1.04) rotate(1deg);
-}
-
-.product-statue {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 6px 10px;
-  border-radius: 5px;
-  background-color: var(--danger);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: 600;
 }
 
 .search-product-info {
