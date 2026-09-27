@@ -18,6 +18,13 @@ getData()
   `;
   });
 
+searchResult.innerHTML = `
+      <div class="products-empty">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>Write Product Name</h3>
+      </div>
+  `;
+
 searchResult.addEventListener("click", function (e) {
   let product = e.target.closest(".search-product");
 
@@ -29,6 +36,13 @@ searchResult.addEventListener("click", function (e) {
 searchInput.addEventListener("keyup", function (e) {
   if (e.target.value.trim()) {
     search();
+  } else {
+    searchResult.innerHTML = `
+      <div class="products-empty">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>Write Product Name</h3>
+      </div>
+  `;
   }
 });
 
