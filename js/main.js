@@ -14,7 +14,7 @@ let cartProductsData = JSON.parse(localStorage.getItem("cartProducts")) || [];
 let wishlistProductsData =
   JSON.parse(localStorage.getItem("wishlistProducts")) || [];
 
-// handle get and show data
+// start handle get and show data
 
 productsGrid.innerHTML = `
 <div class="loading">
@@ -37,6 +37,8 @@ getData()
     `;
   });
 
+// end handle get and show data
+
 productsGrid.addEventListener("click", function (e) {
   const productcart = e.target.closest(".product-cart");
 
@@ -44,10 +46,12 @@ productsGrid.addEventListener("click", function (e) {
 
   if (e.target.closest(".add-cart-btn")) {
     addTocart(productcart.dataset.id);
+    e.target.closest(".add-cart-btn").classList.add("disabled");
     return;
   }
 
   if (e.target.closest(".wishlist-btn")) {
+    e.target.closest(".wishlist-btn").classList.add("active");
     addToWishlist(productcart.dataset.id);
     return;
   }
@@ -74,6 +78,7 @@ cartProducts.addEventListener("click", function (e) {
 
   if (e.target.closest(".remove-cart")) {
     delProduct(id);
+    showProducts(products);
   }
 });
 
@@ -87,12 +92,14 @@ wishlistProducts.addEventListener("click", function (e) {
 
   if (e.target.closest(".remove-wishlist")) {
     removeProductFromWishlist(id);
+    showProducts(products);
     return;
   }
 
   location.href = `product.html?id=${id}`;
 });
 
+// render products in products page and home page
 function showProducts(data) {
   let html = "";
   let productsLength;
@@ -105,12 +112,20 @@ function showProducts(data) {
   }
 
   for (let i = 0; i < productsLength; i++) {
+    const testInWishList = wishlistProductsData.find((p) => {
+      return p.id === data[i].id;
+    });
+
+    const testInCart = cartProductsData.find((p) => {
+      return p.id === data[i].id;
+    });
+
     html += `
       <article class="product-cart" data-id="${data[i].id}">
         <div class="product-image">
           <img src="${data[i]["image-1"]}" alt="${data[i].name}" />
 
-          <button class="wishlist-btn">
+          <button class="wishlist-btn ${testInWishList ? "active" : ""}">
             <i class="fa-solid fa-heart"></i>
           </button>
         </div>
@@ -122,7 +137,7 @@ function showProducts(data) {
             EGP ${data[i].price}
           </p>
 
-          <button class="add-cart-btn" data-id="${data[i].id}">
+          <button class="add-cart-btn ${testInCart ? "disabled" : ""}" data-id="${data[i].id}">
             Add to cart
           </button>
         </div>
@@ -133,12 +148,10 @@ function showProducts(data) {
   productsGrid.innerHTML = html;
 }
 
-// handle click on product
 function goToProduct(id) {
   location.href = `product.html?id=${id}`;
 }
 
-// add to cart
 function addTocart(id) {
   const product = products.find((product) => {
     return product.id === Number(id);
@@ -159,7 +172,6 @@ function addTocart(id) {
   showcartProducts();
 }
 
-// add to wishlist
 function addToWishlist(id) {
   const product = products.find((product) => {
     return product.id === Number(id);
@@ -167,6 +179,7 @@ function addToWishlist(id) {
 
   if (!product) return;
 
+  // check if found in wishlist or no
   const test = wishlistProductsData.some((p) => {
     return p.id === product.id;
   });

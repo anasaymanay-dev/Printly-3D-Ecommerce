@@ -1051,6 +1051,10 @@ nav ul li a:hover::before {
   /* background-color: var(--danger); */
 }
 
+.wishlist-btn.active i {
+  color: var(--danger);
+}
+
 .product-info {
   padding: 10px;
 }
@@ -1085,6 +1089,12 @@ nav ul li a:hover::before {
 .add-cart-btn:hover {
   background-color: var(--primary-light);
   transform: translateY(-1px);
+}
+
+.add-cart-btn.disabled {
+  opacity: 0.8;
+  background-color: var(--primary-light);
+  cursor: no-drop;
 }
 
 @media (max-width: 900px) {

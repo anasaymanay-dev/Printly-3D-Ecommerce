@@ -117,7 +117,7 @@ function search() {
     searchResult.innerHTML = `
       <div class="products-empty">
         <i class="fa-solid fa-box-open"></i>
-        <h3>Not Product Found With Name</h3>
+        <h3>Not Product Found With Name "${searchValue}"</h3>
       </div>
   `;
   } else {

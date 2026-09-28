@@ -1,10 +1,13 @@
 import getData from "./getData.js";
 const params = new URLSearchParams(location.search);
-
+const heartCount = document.getElementById("heart-count");
+const wishlistProducts = document.getElementById("wishlist-products");
 const id = params.get("id");
-
+let products;
 const productDetails = document.getElementById("product-details");
-
+let wishlistProductsData =
+  JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+let cartProductsData = JSON.parse(localStorage.getItem("cartProducts")) || [];
 let currentImage = 1;
 
 productDetails.innerHTML = `
@@ -16,7 +19,15 @@ productDetails.innerHTML = `
 
 getData()
   .then((data) => {
-    showProduct(id, data);
+    products = data;
+    showProduct(id);
+    document.getElementById("prev").addEventListener("click", prev);
+    document.getElementById("next").addEventListener("click", next);
+    document
+      .getElementById("wishlist-btn")
+      .addEventListener("click", function () {
+        console.log(true);
+      });
   })
   .catch((error) => {
     productDetails.innerHTML = `
@@ -27,7 +38,7 @@ getData()
   `;
   });
 
-function showProduct(id, products) {
+function showProduct() {
   const product = products.find((product) => {
     return product.id === Number(id);
   });
@@ -40,6 +51,14 @@ function showProduct(id, products) {
       </div>`;
     return;
   }
+
+  const inCart = cartProductsData.some((product) => {
+    return product.id === Number(id);
+  });
+
+  const inWishlist = wishlistProductsData.some((product) => {
+    return product.id === Number(id);
+  });
 
   productDetails.innerHTML = `
   <!-- Product Gallery -->
@@ -99,60 +118,21 @@ function showProduct(id, products) {
             </div>
 
             <div class="product-actions">
-              <div class="quantity-product">
-                <button id="minus-btn" onclick='minus()'>-</button>
-
-                <span id="quantity">1</span>
-
-                <button id="plus-btn" onclick='plus()'>+</button>
-              </div>
-
-              <button class="add-cart-btn" id="add-cart-btn">
+              <button class="add-cart-btn ${inCart ? "disabled" : ""}" id="add-cart-btn">
                 <i class="fa-solid fa-cart-shopping"></i>
                 Add to Cart
               </button>
+
+              <button
+                class="wishlist-btn ${inWishlist ? "active" : ""}"
+                id="wishlist-btn">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+            </div>
             </div>
           </div>
   `;
 }
-
-productDetails.addEventListener("click", function (e) {
-  if (e.target.classList.contains("bullet")) {
-    currentImage = Number(e.target.dataset.id);
-    changeImage();
-    return;
-  }
-  if (
-    e.target.classList.contains("next") ||
-    e.target.closest("button").classList.contains("next")
-  ) {
-    next();
-    return;
-  }
-  if (
-    e.target.classList.contains("prev") ||
-    e.target.closest("button").classList.contains("prev")
-  ) {
-    prev();
-  }
-});
-
-function minus() {
-  let quantityElement = document.getElementById("quantity");
-  let count = Number(quantityElement.textContent);
-  if (count > 1) {
-    count--;
-    quantityElement.textContent = count;
-  }
-}
-
-function plus() {
-  let quantityElement = document.getElementById("quantity");
-  let count = Number(quantityElement.textContent);
-  count++;
-  quantityElement.textContent = count;
-}
-
 function prev() {
   if (currentImage > 1) {
     currentImage--;
