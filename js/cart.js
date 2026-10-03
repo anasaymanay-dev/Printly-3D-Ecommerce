@@ -71,7 +71,7 @@ function showcartProducts() {
 }
 
 function calcProductPrice() {
-  shippingPrice = cartProductsData.length > 0 ? 50 : 0;
+  const shippingPrice = cartProductsData.length > 0 ? 50 : 0;
   cartShipping.innerHTML = "LE " + shippingPrice.toFixed(2);
   cartSubtotal.innerHTML = "LE " + subTotal.toFixed(2);
   cartTotal.innerHTML = "LE " + (subTotal + shippingPrice).toFixed(2);
@@ -128,7 +128,6 @@ function decProduct(id) {
     const newProducts = cartProductsData.map((p) => {
       return p.id === id ? { ...p, quantity: p.quantity - 1 } : p;
     });
-    cartProductsData;
     cartProductsData = newProducts;
 
     localStorage.setItem("cartProducts", JSON.stringify(cartProductsData));

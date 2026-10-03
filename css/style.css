@@ -1140,6 +1140,8 @@ nav ul li a:hover::before {
   }
 }
 /* end products */
+
+/* start footer */
 .footer {
   background: var(--dark);
   color: var(--white);
@@ -1328,3 +1330,4 @@ nav ul li a:hover::before {
     justify-content: center;
   }
 }
+/* end footer */
