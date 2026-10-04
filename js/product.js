@@ -411,7 +411,7 @@ function addToWishList() {
 
   wishlistProductsData.push(product);
 
-  localStorage.setItem("wishlistProducts", JSON.stringify(cartProductsData));
+  localStorage.setItem("wishlistProducts", JSON.stringify(wishlistProductsData));
 
   document.getElementById("wishlist-btn").classList.add("active");
 
